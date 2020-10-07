@@ -1,0 +1,5 @@
+Version 1
+
+- initial fork for ESP32
+  High speed VSPI direct connection mode with many support functions, thee example projects included, dmd_demo, dmd_clock_readout and dmd_latin_chars with extra fonts
+
