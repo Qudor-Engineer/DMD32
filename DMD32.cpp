@@ -47,8 +47,11 @@ DMD::DMD(byte panelsWide, byte panelsHigh)
     
     
 	
-	//initialise instance of the SPIClass attached to vspi
-	vspi = new SPIClass(VSPI);
+    //initialise instance of the SPIClass attached to vspi
+    vspi = new SPIClass(VSPI);
+	
+    //initialise instance of the SPIClass attached to HSPI
+    //vspi = new SPIClass(HSPI);
 
     // initialize the SPI port
     vspi->begin();		// initiate VSPI with the default pinsinitiat VSPI with the defualt pins
