@@ -140,26 +140,41 @@ void
 }
 
 void DMD::drawString(int bX, int bY, const char *bChars, byte length,
-		     byte bGraphicsMode)
+                     byte bGraphicsMode)
 {
-    if (bX >= (DMD_PIXELS_ACROSS*DisplaysWide) || bY >= DMD_PIXELS_DOWN * DisplaysHigh)
-	return;
+    if (bX >= (DMD_PIXELS_ACROSS * DisplaysWide) || bY >= DMD_PIXELS_DOWN * DisplaysHigh)
+        return;
     uint8_t height = pgm_read_byte(this->Font + FONT_HEIGHT);
-    if (bY+height<0) return;
+    if (bY + height < 0)
+        return;
 
     int strWidth = 0;
-	this->drawLine(bX -1 , bY, bX -1 , bY + height, GRAPHICS_INVERSE);
+    this->drawLine(bX - 1, bY, bX - 1, bY + height, GRAPHICS_INVERSE);
 
-    for (int i = 0; i < length; i++) {
-        int charWide = this->drawChar(bX+strWidth, bY, bChars[i], bGraphicsMode);
-	    if (charWide > 0) {
-	        strWidth += charWide ;
-	        this->drawLine(bX + strWidth , bY, bX + strWidth , bY + height, GRAPHICS_INVERSE);
-            strWidth++;
-        } else if (charWide < 0) {
-            return;
+    for (int i = 0; i < length; i++)
+    {
+        // Serial.println(bChars[i]);
+        if (bChars[i] == '\n')
+        {
+            strWidth = 0;
+            bY = bY + height + 1;
         }
-        if ((bX + strWidth) >= DMD_PIXELS_ACROSS * DisplaysWide || bY >= DMD_PIXELS_DOWN * DisplaysHigh) return;
+        else
+        {
+            int charWide = this->drawChar(bX + strWidth, bY, bChars[i], bGraphicsMode);
+            if (charWide > 0)
+            {
+                strWidth += charWide;
+                this->drawLine(bX + strWidth, bY, bX + strWidth, bY + height, GRAPHICS_INVERSE);
+                strWidth++;
+            }
+            else if (charWide < 0)
+            {
+                return;
+            }
+            // if ((bX + strWidth) >= DMD_PIXELS_ACROSS * DisplaysWide || bY >= DMD_PIXELS_DOWN * DisplaysHigh)
+            //     return;
+        }
     }
 }
 
