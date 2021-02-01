@@ -492,6 +492,10 @@ void DMD::selectFont(const uint8_t * font)
     this->Font = font;
 }
 
+uint8_t DMD::getFontHeight()
+{
+    return pgm_read_byte(this->Font + FONT_HEIGHT);
+}
 
 int DMD::drawChar(const int bX, const int bY, const unsigned char letter, byte bGraphicsMode)
 {
