@@ -34,13 +34,33 @@ Modified by: Khudhur Alfarhan  // Qudoren@gmail.com
 /*--------------------------------------------------------------------------------------
   Includes
 --------------------------------------------------------------------------------------*/
-#include <DMD32.h>        //
+#include <DMD32.h>        //include Library
+
+/*           P10 pins              */
+#define PIN_DMD_nOE 22          //22       //4    // D22 active low Output Enable, setting this low lights all the LEDs in the selected rows. Can pwm it at very high frequency for brightness control.
+#define PIN_DMD_A 19            //19       //13   // D19  default is 15   
+#define PIN_DMD_B 21            //21       //12   // D21
+#define PIN_DMD_CLK 18          //18       //18   // D18_SCK  is SPI Clock if SPI is used   R39
+#define PIN_DMD_SCLK  2         //2        //14   // D02
+#define PIN_DMD_R_DATA  23      //23       //23   // D23_MOSI is SPI Master Out if SPI is used
+
+
 #include "fonts/SystemFont5x7.h"
 #include "fonts/Arial_black_16.h"
+#include "fonts/Arial_38b.h"
+#include "fonts/Arial_Black_16_ISO_8859_1.h"
+#include "fonts/Arial_Black21.h"
+#include "fonts/Arial14.h"
+#include "fonts/BodoniMTBlack24.h"
+#include "fonts/Comic24.h"
+#include "fonts/Droid_Sans_24.h"
+#include "fonts/Tahoma_32.h"
 
+//To use multiple Display connect displays in Series.
+//If you have 8 module and want to make 4*4 display connect all of them in series. 
 //Fire up the DMD library as dmd
-#define DISPLAYS_ACROSS 1
-#define DISPLAYS_DOWN 1
+#define DISPLAYS_ACROSS 1         //4
+#define DISPLAYS_DOWN 1           //2
 DMD dmd(DISPLAYS_ACROSS, DISPLAYS_DOWN);
 
    //Timer setup
