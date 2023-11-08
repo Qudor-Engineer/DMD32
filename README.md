@@ -16,5 +16,7 @@ The connection between ESP32 and DMD display shown in the image below:
 
 I changed the SPI to VSPI and used ESP32 hardware timer and more miner modifications.
 
+#Unfortunately, this library is no longer maintained. If you face any problem you can fork it to do your modification.
+
 Khudhur Alfarhan 
-Qudoren@gmail.com
+
