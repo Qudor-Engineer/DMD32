@@ -1,4 +1,7 @@
 # DMD32
+NOTE: 
+   DMD32 Library work with ESP32 2.0.1 Version from Arduino IDE, sometimes latest library don't work.
+
 A library for driving the Freetronics 512 pixel dot matrix LED display "DMD", a 32 x 16 layout using ESP32.
 
 This library is a fork of the original one [(DMD)](https://github.com/freetronics/DMD) modified to support ESP32 (currently it is only working on ESP32).
